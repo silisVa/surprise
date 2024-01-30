@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Century Gothic, Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ff1493; /* Strong Pink Color */
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            padding: 10px 20px;
+            font-size: 36px; /* Twice the original size */
+            margin: 10px;
+            cursor: pointer;
+            background-color: #ff1493; /* Strong Pink Color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #text-row1, #text-row2 {
+            font-size: 60px; /* Twice the original size */
+        }
+    </style>
+</head>
+<body style="background-image: url('image1.jpg');">
+
+    <div id="container">
+        <div id="text-row1">Hey Beautiful</div>
+        <div id="text-row2">Will you be my Valentine?</div>
+        <div id="dynamic-text"></div>
+        <img id="main-image" src="image2.jpg" alt="Main Image" width="400">
+        <br>
+        <button id="yes-button" onclick="yesButtonClick()">Yes</button>
+        <button id="no-button" onclick="noButtonClick()">No</button>
+    </div>
+
+    <script>
+        function yesButtonClick() {
+            document.getElementById('text-row1').style.display = 'none';
+            document.getElementById('text-row2').style.display = 'none';
+            document.getElementById('dynamic-text').innerHTML = "LET'S GO, See you on the 14th baby <3";
+            document.getElementById('main-image').src = 'image3.jpg';
+            document.getElementById('yes-button').style.display = 'none';
+            document.getElementById('no-button').style.display = 'none';
+        }
+
+        function noButtonClick() {
+            // Get the existing "No" button
+            var existingNoButton = document.getElementById('no-button');
+
+            // Remove the existing "No" button from the DOM
+            existingNoButton.parentNode.removeChild(existingNoButton);
+
+            // Create a new "No" button at a random position
+            var newNoButton = document.createElement('button');
+            newNoButton.innerHTML = 'No';
+            newNoButton.id = 'no-button';
+            newNoButton.onclick = noButtonClick;
+
+            // Set random position
+            newNoButton.style.position = 'absolute';
+            newNoButton.style.left = Math.random() * window.innerWidth + 'px';
+            newNoButton.style.top = Math.random() * window.innerHeight + 'px';
+
+            // Add the new button to the body
+            document.body.appendChild(newNoButton);
+        }
+    </script>
+
+</body>
+</html>
